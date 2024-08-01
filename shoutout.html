@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shoutout</title>
+    <style>
+        body {
+            background-color: rgba(0, 0, 0, 0);
+            color: white;
+            font-size: 36px;
+            text-align: center;
+        }
+        #message {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="message">Check out <span id="user"></span>! They were last seen playing <span id="game"></span>! Here are their clips: <a id="clips" href="#" target="_blank">clips</a></div>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const user = urlParams.get('user');
+        const game = urlParams.get('game');
+        const clips = urlParams.get('clips');
+
+        if (user && game && clips) {
+            document.getElementById('user').textContent = user;
+            document.getElementById('game').textContent = game;
+            document.getElementById('clips').href = clips;
+            document.getElementById('message').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('message').style.display = 'none';
+            }, 10000); // Display for 10 seconds
+        }
+    </script>
+</body>
+</html>
